@@ -14,7 +14,7 @@ cache:
   - $HOME/.m2
 
 env:
-  - DOCKER_IMAGE=gregork/rso-music:1.0.0-SNAPSHOT-$TRAVIS_JOB_NUMBER
+  - DOCKER_IMAGE=3978hge3gu/rso-music:1.0.0-SNAPSHOT-$TRAVIS_JOB_NUMBER
 
 script:
   - mvn clean package -U
@@ -22,4 +22,4 @@ script:
 
 after_success:
   - dockerlogin -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker push 3978hge3gu/rso-music
+  - docker push "$DOCKER_IMAGE"
