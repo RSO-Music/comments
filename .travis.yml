@@ -7,11 +7,11 @@ language: java
 dist: bionic
 
 jdk:
-- openjdk11
+  - openjdk11
 
 cache:
   directories:
-  - $HOME/.m2
+    - $HOME/.m2
 
 env:
   - DOCKER_IMAGE=3978hge3gu/rso-music:1.0.0-SNAPSHOT-$TRAVIS_JOB_NUMBER
