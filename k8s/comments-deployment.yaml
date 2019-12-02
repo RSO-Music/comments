@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: comments-deployment
+  name: songs-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: comments
+      app: songs
   template:
     metadata:
       labels:
-        app: comments
+        app: songs
     spec:
       containers:
-      - image: 3978hge3gu/rso-music:1.0.0-SNAPSHOT-11.1
-        name: comments
+      - image: 3978hge3gu/rso-music:1.0.0-SNAPSHOT-12.1
+        name: songs
         env:
           - name: KUMULUZEE_DISCOVERY_CLUSTER
             value: gcloud
@@ -45,7 +45,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: comments
+  name: songs
 spec:
   type: ClusterIP
   ports:
@@ -53,4 +53,4 @@ spec:
       protocol: TCP
       targetPort: server
   selector:
-    app: comments
+    app: songs

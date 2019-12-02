@@ -7,5 +7,5 @@ import javax.ws.rs.core.Application;
 
 @RegisterService
 @ApplicationPath("v1")
-public class CommentsApplication extends Application {
+public class SongsApplication extends Application {
 }

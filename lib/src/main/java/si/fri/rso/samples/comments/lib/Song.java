@@ -2,14 +2,14 @@ package si.fri.rso.samples.comments.lib;
 
 import java.time.Instant;
 
-public class Comment {
+public class Song {
 
     private Integer imageId;
     private Instant createdAt;
     private String authorId;
     private String text;
 
-    public Comment(Integer imageId, String authorId, String text) {
+    public Song(Integer imageId, String authorId, String text) {
         this.imageId = imageId;
         this.createdAt = Instant.now();
         this.authorId = authorId;

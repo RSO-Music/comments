@@ -2,8 +2,8 @@ package si.fri.rso.samples.comments.api.v1.resources;
 
 import com.kumuluz.ee.logs.cdi.Log;
 import org.eclipse.microprofile.metrics.annotation.Counted;
-import si.fri.rso.samples.comments.lib.Comment;
-import si.fri.rso.samples.comments.services.CommentsBean;
+import si.fri.rso.samples.comments.lib.Song;
+import si.fri.rso.samples.comments.services.SongsBean;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -14,42 +14,42 @@ import java.util.List;
 
 @Log
 @ApplicationScoped
-@Path("/comments")
+@Path("/songs")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class CommentsResource {
 
     @Inject
-    private CommentsBean commentsBean;
+    private SongsBean songsBean;
 
     @GET
     @Counted
     public Response getComments(@QueryParam("imageId") Integer imageId) {
 
-        List<Comment> comments;
+        List<Song> songs;
 
         if (imageId != null) {
-            comments = commentsBean.getCommentsForImage(imageId);
+            songs = songsBean.getCommentsForImage(imageId);
         } else {
-            comments = commentsBean.getComments();
+            songs = songsBean.getSongs();
         }
 
-        return Response.ok(comments).build();
+        return Response.ok(songs).build();
     }
 
     @GET
     @Path("count")
     public Response getCommentsCount(@QueryParam("imageId") Integer imageId) {
 
-        List<Comment> comments;
+        List<Song> songs;
 
         if (imageId != null) {
-            comments = commentsBean.getCommentsForImage(imageId);
+            songs = songsBean.getCommentsForImage(imageId);
         } else {
-            comments = commentsBean.getComments();
+            songs = songsBean.getSongs();
         }
 
-        return Response.ok(comments.size()).build();
+        return Response.ok(songs.size()).build();
     }
 
 }

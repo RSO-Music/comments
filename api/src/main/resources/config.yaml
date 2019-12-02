@@ -1,5 +1,5 @@
 kumuluzee:
-  name: comments-service
+  name: songs-service
   env:
     name: dev
   version: 1.0.0
@@ -12,11 +12,11 @@ kumuluzee:
       hosts: http://192.168.29.109:2379
   metrics:
     web-instrumentation:
-      - name: comments-endpoint
-        url-pattern: /v1/comments/*
+      - name: songs-endpoint
+        url-pattern: /v1/songs/*
   logs:
     config-file: '<?xml version="1.0" encoding="UTF-8"?>
-                      <Configuration name="comments">
+                      <Configuration name="songs">
                           <Appenders>
                               <Console name="console" target="SYSTEM_OUT">
                                   <PatternLayout pattern="%d %p %marker %m %X %ex %n"/>
