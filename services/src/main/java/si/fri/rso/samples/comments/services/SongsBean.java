@@ -17,12 +17,21 @@ public class SongsBean {
 
     private List<Song> songs;
 
+    /*
+    Integer songId, String authorId, String text, String album, Integer length
+
+
+     */
+
     @PostConstruct
     private void init() {
         songs = new ArrayList<>();
-        songs.add(new Song(1, UUID.randomUUID().toString(), "Very nice photo!"));
-        songs.add(new Song(1, songs.get(0).getAuthorId(), "Keep up the good work!"));
-        songs.add(new Song(1, UUID.randomUUID().toString(), "Beautiful"));
+        //songs.add(new Song(1, UUID.randomUUID().toString(), "Very nice photo!"));
+        //songs.add(new Song(1, songs.get(0).getAuthorId(), "Keep up the good work!"));
+        //songs.add(new Song(1, UUID.randomUUID().toString(), "Beautiful"));
+        songs.add(new Song(1, UUID.randomUUID().toString(), "Rolling in the Deep", UUID.randomUUID().toString(), 123));
+        songs.add(new Song(2, UUID.randomUUID().toString(), "Me!", UUID.randomUUID().toString(), 123));
+        songs.add(new Song(3, UUID.randomUUID().toString(), "Horizon", UUID.randomUUID().toString(), 123));
     }
 
     public List<Song> getSongs() {
@@ -33,7 +42,7 @@ public class SongsBean {
 
     public List<Song> getCommentsForImage(Integer imageId) {
 
-        return songs.stream().filter(song -> song.getImageId().equals(imageId)).collect(Collectors.toList());
+        return songs.stream().filter(song -> song.getSongId().equals(imageId)).collect(Collectors.toList());
     }
 
 }

@@ -4,24 +4,28 @@ import java.time.Instant;
 
 public class Song {
 
-    private Integer imageId;
-    private Instant createdAt;
+    private Integer songId;
+    private Instant uploadedAt;
     private String authorId;
-    private String text;
+    private String name;
+    private String albumId;
+    private Integer length;
 
-    public Song(Integer imageId, String authorId, String text) {
-        this.imageId = imageId;
-        this.createdAt = Instant.now();
+    public Song(Integer songId, String authorId, String name, String albumId, Integer length) {
+        this.songId = songId;
+        this.uploadedAt = Instant.now();
         this.authorId = authorId;
-        this.text = text;
+        this.name = name;
+        this.albumId = albumId;
+        this.length = length;
     }
 
-    public Instant getCreatedAt() {
-        return createdAt;
+    public Instant getUploadedAt() {
+        return uploadedAt;
     }
 
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
+    public void setUploadedAt(Instant uploadedAt) {
+        this.uploadedAt = uploadedAt;
     }
 
     public String getAuthorId() {
@@ -32,19 +36,37 @@ public class Song {
         this.authorId = authorId;
     }
 
-    public String getText() {
-        return text;
+    public String getName() {
+        return name;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Integer getImageId() {
-        return imageId;
+    public Integer getSongId() {
+        return songId;
     }
 
-    public void setImageId(Integer imageId) {
-        this.imageId = imageId;
+    public void setSongId(Integer songId) {
+        this.songId = songId;
     }
+
+    public Integer getLength() {
+        return length;
+    }
+
+    public void setLength(Integer length) {
+        this.length = length;
+    }
+
+    public String getAlbumId() {
+        return albumId;
+    }
+
+    public void setAlbumId(String albumId) {
+        this.albumId = albumId;
+    }
+
+
 }
