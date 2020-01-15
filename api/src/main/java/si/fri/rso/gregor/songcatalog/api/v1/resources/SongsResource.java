@@ -21,9 +21,11 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.io.*;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.FileChannel;
+import java.nio.channels.ReadableByteChannel;
 import java.nio.channels.WritableByteChannel;
 import java.util.Date;
 import java.util.List;
@@ -44,9 +46,14 @@ public class SongsResource {
     final int chunk_size = 1024 * 1024; // 1MB chunks
     private final File audio;
 
-    public SongsResource() {
+    public SongsResource() throws IOException {
         // serve media from file system
-        String MEDIA_FILE = "/ScottJoplin-TheEntertainer1902.mp3";
+        URL website = new URL("https://rso-music.s3.amazonaws.com/d2ed099eb3cda2e1635fa1c97287c7735611ec50");
+        ReadableByteChannel rbc = Channels.newChannel(website.openStream());
+        FileOutputStream fos = new FileOutputStream("temp.mp3");
+        fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+
+        String MEDIA_FILE = "temp.mp3";
         URL url = this.getClass().getResource(MEDIA_FILE);
         audio = new File(url.getFile());
     }
