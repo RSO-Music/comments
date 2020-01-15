@@ -52,7 +52,7 @@ public class SongsResource {
         ReadableByteChannel rbc = Channels.newChannel(website.openStream());
         FileOutputStream fos = new FileOutputStream("temp.mp3");
         fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-
+        System.out.println("CURRENT working directory:" + System.getProperty("user.dir"));
         String MEDIA_FILE = "temp.mp3";
         URL url = this.getClass().getResource(MEDIA_FILE);
         audio = new File(url.getFile());
